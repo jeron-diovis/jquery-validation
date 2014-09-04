@@ -750,18 +750,18 @@ $.extend( $.validator, {
 			var place, group, errorID,
 				error = this.errorsFor( element ),
 				elementID = this.idOrName( element ),
-				describedBy = $( element ).attr( "aria-describedby"),
+				describedBy = $( element ).attr( "aria-describedby" ),
 				renderMessage = this.settings.renderErrorMessage || this.renderErrorMessage;
 			if ( error.length ) {
 				// refresh error/success class
 				error.removeClass( this.settings.validClass ).addClass( this.settings.errorClass );
-				renderMessage.call(this, error, message);
+				renderMessage.call(this, error, message, element);
 			} else {
 				// create error element
 				error = $( "<" + this.settings.errorElement + ">" )
 					.attr( "id", elementID + "-error" )
 					.addClass( this.settings.errorClass );
-				renderMessage.call(this, error, message || "");
+				renderMessage.call(this, error, message || "", element);
 
 				// Maintain reference to the element to be placed into the DOM
 				place = error;
